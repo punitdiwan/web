@@ -1,9 +1,11 @@
 {
-  "name": "create-next-example-app",
-  "license": "MIT",
+  "private": true,
+  "name": "sanity-nextjs-landing-pages-web",
+  "version": "1.0.2",
+  "author": "Sanity <hello@sanity.io>",
   "scripts": {
     "dev": "next",
-    "build": "next build && next export && node exportSitemap.js",
+    "build": "next build && next export -o public -s && node exportSitemap.js",
     "format": "prettier-eslint --write \"**/*.js\" \"!.next/**\" \"!node_modules/**\" \"!out/**\"",
     "lint": "eslint .",
     "start": "next start"
@@ -15,13 +17,13 @@
     "@zeit/next-css": "^1.0.1",
     "groq": "^0.140.0",
     "lodash": "^4.17.11",
+    "next": "^8.1.0",
     "next-seo": "^1.11.2",
-    "next": "^9.1.6",
-    "react": "^16.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-inlinesvg": "^0.8.4",
     "react-mailchimp-form": "^1.0.1",
-    "react-mailchimp-subscribe": "^2.1.0",
-    "react-dom": "^16.12.0"
+    "react-mailchimp-subscribe": "^2.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
@@ -37,8 +39,5 @@
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.6.0",
     "sitemap": "^2.1.0"
-  },
-  "engines": {
-    "node": "10.x"
   }
 }

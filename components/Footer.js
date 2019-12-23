@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Link from "next/link";
-import { withRouter } from "next/router";
-import styles from "./Footer.module.css";
-import SimpleBlockContent from "./SimpleBlockContent";
+import React from 'react'
+import PropTypes from 'prop-types'
+import Link from 'next/link'
+import {withRouter} from 'next/router'
+import styles from './Footer.module.css'
+import SimpleBlockContent from './SimpleBlockContent'
 
-function Footer(props) {
-  const { navItems, text, router } = props;
+function Footer (props) {
+  const {navItems, text, router} = props
   return (
     <div className={styles.root}>
       <nav>
@@ -14,24 +14,21 @@ function Footer(props) {
           {navItems &&
             navItems.map(item => {
               const isActive =
-                router.pathname === "/LandingPage" &&
-                router.query.slug === item.slug.current;
+                router.pathname === '/LandingPage' && router.query.slug === item.slug.current
               return (
                 <li key={item._id} className={styles.item}>
                   <Link
                     href={{
-                      pathname: "/LandingPage",
-                      query: { slug: item.slug.current }
+                      pathname: '/LandingPage',
+                      query: {slug: item.slug.current}
                     }}
                     as={`/${item.slug.current}`}
                     prefetch
                   >
-                    <a data-is-active={isActive ? "true" : "false"}>
-                      {item.title}
-                    </a>
+                    <a data-is-active={isActive ? 'true' : 'false'}>{item.title}</a>
                   </Link>
                 </li>
-              );
+              )
             })}
         </ul>
       </nav>
@@ -39,7 +36,7 @@ function Footer(props) {
         <SimpleBlockContent blocks={text} />
       </div>
     </div>
-  );
+  )
 }
 
 Footer.propTypes = {
@@ -58,6 +55,6 @@ Footer.propTypes = {
       slug: PropTypes.string
     })
   })
-};
+}
 
-export default withRouter(Footer);
+export default withRouter(Footer)
