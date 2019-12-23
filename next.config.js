@@ -16,7 +16,6 @@ const query = `
   }}
 }
 `;
-
 const reduceRoutes = (obj, route) => {
   const { page = {}, slug = {} } = route;
   const { _createdAt, _updatedAt } = page;
@@ -37,17 +36,12 @@ const reduceRoutes = (obj, route) => {
 
 module.exports = withCSS({
   cssModules: true,
+  ignoreStrictRoutes: false,
   cssLoaderOptions: {
     importLoaders: 1,
     localIdentName: isProduction ? "[hash:base64:5]" : "[name]__[local]___[hash:base64:5]"
   },
-  exportPathMap: async function() {
-    // return {
-    //   "/": { page: "/LandingPage" },
-    //   "/about": { page: "/LandingPage" },
-    //   "/contact": { page: "/LandingPage" },
-    //   "/custom-page": { page: "/CustomPage" }
-    // };
+  exportPathMap: function() {
     return client.fetch(query).then(res => {
       const { routes = [] } = res;
       const nextRoutes = {
@@ -55,7 +49,6 @@ module.exports = withCSS({
         ...routes.filter(({ slug }) => slug.current).reduce(reduceRoutes, {}),
         "/custom-page": { page: "/CustomPage" }
       };
-      console.log(nextRoutes);
       return nextRoutes;
     });
   }
