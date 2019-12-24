@@ -18,7 +18,7 @@ client.fetch(`*[_id == "global-config"] {url}[0]`).then(config => {
       }
     });
 
-    fs.writeFile(`./public/sitemap.xml`, sitemap.toString(), err => {
+    fs.writeFile(`./dist/sitemap.xml`, sitemap.toString(), err => {
       if (err) throw err;
       console.log(`sitemap.xml updated`);
     });
